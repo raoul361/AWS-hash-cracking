@@ -1,5 +1,4 @@
-# AWS-hash-cracking
-Cracking hashes using AWS GPU instances
+# Cracking hashes using AWS GPU instances
 
 ## The Concept
 
@@ -38,7 +37,10 @@ halt
 
 ## Results
 
-Disappointing! While this all works, the GPU's afforded through AWS are no where near the power of a current generation gaming GPU. It was much quicker to run this on my desktop than in the cloud - even across 4 GPU's. It should also be noted that the configuration and availability of the high end compute instances varies significantly.
+Disappointing! While this all works in theory, the GPU's afforded through AWS are no where near the power of a current generation gaming GPU. It was much quicker to run this on my desktop than in the cloud - even across 4 GPU's. It should also be noted that the configuration and availability of the high end compute instances varies significantly.
+
+So I left it here. I may pick it up again if/when I find a way to do this on AWS that beats a mid-range GPU.
+
 
 ### Hash rates on AWS
 
