@@ -7,15 +7,16 @@ Use AWS to run a timeboxed hashcat instance with many GPU's to test the strength
 
 The intended architecture is:
 * use **slack** to trigger a **Lambda** function (via standard bot-http interface)
-* the Lambda function would run an **ec2** instance 
+* the **Lambda** function would ```instance.start()``` an **ec2** multi GPU instance 
 * which on start up would configure **hashcat** using configurations and dictionaries off an **S3** bucket
 * let **hashcat** run for a set period
 * return the result via a **http webhook** to **slack**.
 
+![architecture](https://github.com/raoul361/AWS-hash-cracking/blob/master/AWS%20GPU%20hashing.png)
 
 ## EC2 Instance
 
-I set up an ec2 instance as a proof of concept to run hashcat. AWS provides an instance with 4, 8 or 16 GPU's; I chose the **g3.4xlarge**. For the OS, I'm using the **NVIDIA Linux AMI** which comes with the NVIDIA drivers ready to go. This is important, as otherwise you need to modify kernal drivers which requires rebooting the system. I just want something easy.
+I set up an ec2 instance as a proof of concept to run hashcat. AWS provides an instance with 4, 8 or 16 GPU's; I chose the **g3.4xlarge**. For the OS, I'm using the **NVIDIA Linux AMI** which comes with the NVIDIA drivers ready to go. This is important, as otherwise you need to modify kernel drivers which requires rebooting the system. I just want something easy.
 
 ### EC2 user-data
 
@@ -37,7 +38,7 @@ halt
 
 ## Results
 
-Dissapointing! While this all works, the GPU's afforded through AWS are no where near the power of a current generation gaming GPU. It was much quicker to run this on my desktop than in the cloud - even across 4 GPU's. It should also be noted that the configuration and availability of the high end compute instances varies significantly.
+Disappointing! While this all works, the GPU's afforded through AWS are no where near the power of a current generation gaming GPU. It was much quicker to run this on my desktop than in the cloud - even across 4 GPU's. It should also be noted that the configuration and availability of the high end compute instances varies significantly.
 
 ### Hash rates on AWS
 
